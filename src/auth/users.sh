@@ -1,5 +1,5 @@
 #!/bin/bash
-
+chmod 755 /elasticsearch/plugins/search-guard-6/tools/hash.sh
 hash=$(/elasticsearch/plugins/search-guard-6/tools/hash.sh -p $ELASTIC_PWD)
 sed -ri "s|hash:[^\r\n#]*#elastic|hash: \'$hash\' #elastic|" /elasticsearch/config/searchguard/sg_internal_users.yml
 

@@ -1,47 +1,6 @@
-# DEPREATED
 
-This image is deprecated in favor of the [offical elasticsearch image](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html).
-
-Since version 6.3.0, elastic released X-Pack under Apache 2.0 and stated it would remain in the standard release forever.
-
-[Ref](https://www.elastic.co/blog/elastic-stack-6-3-0-released?blade=linkedin&hulk=social)
-
-
-# Supported tags and respective `Dockerfile` links
-
-* `5.6.3`,`5.6`, `5` [(5.6/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.6/Dockerfile)
-* `6.1.3`,`6.1` [(6.1/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.1/Dockerfile)
-* `6.2.2`,`6.2`, `6`, `latest` [(6.2/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.2/Dockerfile)[![](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
-
-# What is elasticsearch?
-
-Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data so you can discover the expected and uncover the unexpected.
-This image uses [search-guard](https://github.com/floragunncom/search-guard) instead of shield to handle trusted users.
-
-[<img src="https://static-www.elastic.co/fr/assets/blt9a26f88bfbd20eb5/icon-elasticsearch-bb.svg?q=802" width="144" height="144">](https://www.elastic.co/fr/products/elasticsearch)
-
-# How To Use
-
-```
-docker run -d -p 9200:9200 -p 9300:9300 -e ELASTIC_PWD=changeme -e KIBANA_PWD=changeme  khezen/elasticsearch:latest   
-```
-```
-version: '2'
-services:
-    elasticsearch:
-        image: khezen/elasticsearch:5
-        environment:
-            ELASTIC_PWD: changeme
-            KIBANA_PWD: changeme
-        volumes:
-            - /data/elasticsearch:/elasticsearch/data
-            - /etc/elasticsearch:/elasticsearch/config
-        ports:
-             - "9200:9200"
-             - "9300:9300"
-        network_mode: bridge
-        restart: always
-```
+run the run_es.sh to build a cluster of three nodes. All the nodes are of type master, data and ingest.
+You could adjust the number of the cluster nodes by changing `cluster_size=3` into run_es.sh
 
 ## [File Descriptors and MMap](https://www.elastic.co/guide/en/elasticsearch/guide/current/_file_descriptors_and_mmap.html)
 
